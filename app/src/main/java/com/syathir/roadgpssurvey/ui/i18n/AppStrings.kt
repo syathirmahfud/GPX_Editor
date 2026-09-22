@@ -60,6 +60,7 @@ interface AppStrings {
     val errorAccuracy: String
     val errorMovement: String
     val errorSta: String
+    val attribution: String
 
     // History Screen
     val historyTitle: String
@@ -155,6 +156,7 @@ object IndonesianStrings : AppStrings {
     override val errorAccuracy: String = "Batas akurasi harus lebih besar dari 0 m"
     override val errorMovement: String = "Pergerakan minimum tidak boleh negatif"
     override val errorSta: String = "Gunakan format STA awal seperti 12+300"
+    override val attribution: String = "Dibuat oleh SyathirMahfud dengan bantuan pengembangan dari ChatGPT (GPT-5.6 Sol)."
 
     override val historyTitle: String = "RIWAYAT RUAS"
     override val savedMarkers: String = "TITIK TERSIMPAN"
@@ -246,6 +248,7 @@ object EnglishStrings : AppStrings {
     override val errorAccuracy: String = "Accuracy threshold must be greater than 0 m"
     override val errorMovement: String = "Minimum movement cannot be negative"
     override val errorSta: String = "Use initial STA format like 12+300"
+    override val attribution: String = "Built by SyathirMahfud with development assistance from ChatGPT (GPT-5.6 Sol)."
 
     override val historyTitle: String = "SECTION HISTORY"
     override val savedMarkers: String = "SAVED POINTS"

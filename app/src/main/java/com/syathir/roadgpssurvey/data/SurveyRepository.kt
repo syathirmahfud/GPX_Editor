@@ -148,7 +148,20 @@ class SurveyRepository(private val database: AppDatabase) {
     suspend fun updateMarker(marker: SurveyMarker) =
         markers.updateDetails(marker.id, marker.pointName, marker.note, marker.markerType)
 
-    suspend fun deleteRetainedMarker(id: Long): Boolean = markers.deleteDetached(id) == 1
+    suspend fun deleteSavedMarker(id: Long): Boolean = database.withTransaction {
+        val marker = markers.get(id) ?: return@withTransaction false
+        val sessionId = marker.sessionId
+        if (sessionId != null) {
+            val session = sessions.get(sessionId) ?: return@withTransaction false
+            // Keep active tracking state and marker numbering stable. Once a survey is
+            // finished, its saved markers may be managed independently of the road.
+            if (session.status != TrackingStatus.FINISHED) return@withTransaction false
+            if (markers.deleteById(id) != 1) return@withTransaction false
+            sessions.update(session.copy(markerCount = maxOf(0, session.markerCount - 1)))
+            return@withTransaction true
+        }
+        markers.deleteById(id) == 1
+    }
 
     private fun LocationSample.toTrackPoint(session: SurveySession): TrackPoint = TrackPoint(
         sessionId = session.id,

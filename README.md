@@ -14,12 +14,13 @@ Android field-survey tracker for road and civil-engineering work. The app record
 - History offers HAPUS for finished ruas with confirmation. Deletion removes the ruas and its recorded track samples, but preserves all marked points with their original ruas name. Active and paused surveys are protected. Previously exported files are unaffected.
 - The dashboard fills the available screen with stable metric-card sizes, equal secondary cards, and single-line fitted values. Landscape uses a wider layout; small windows allow metric scrolling while keeping recording controls visible.
 
-## Version 1.0.3 workflow
+## Version 1.0.4 workflow
 
 - UI, notifications, floating controls, and messages use Bahasa Indonesia. Android-owned permission and file-picker dialogs follow the device configuration.
 - MULAI starts recording; TANDAI saves a marked point without pausing time or distance. JEDA + TITIK retains the existing pause-and-mark operation; LANJUT resumes it. The title/notification/overlay display the saved marker count.
 - SELESAI stops recording and persists the data before asking for Nama Ruas. Enter a name or explicitly choose NAMA OTOMATIS, then select CSV, GPX, CSV DAN GPX, or NANTI. The filename uses the ruas name. Both formats use sequential document pickers. Cancelling export keeps internal survey data.
 - Pending naming/export prompts are stored in Room and return on reopening. Finishing through the notification also leaves a completion notification linking back to the app.
+- Saved points from a finished ruas can be deleted independently without deleting the road survey or its GPX/track data first. Markers belonging to an active recording remain protected until the survey is finished.
 - RIWAYAT → TITIK TERSIMPAN displays marked points, including those whose ruas was deleted; their name, note, type, WGS84 coordinates, original STA, and original ruas name remain available.
 - Day mode is white with black text from 06:00 through 17:59; night mode is black with white text from 18:00 through 05:59, using the phone's local clock/timezone. This applies to all screens and the floating panel, and updates while open. Empty details explicitly show “Belum ada titik penanda.”
 - Database version 2 migrates existing version-1 data without destructive recreation; marked points use a nullable ruas association so deletion no longer cascades to markers.
@@ -58,7 +59,7 @@ The installable, debug-signed APK is generated at:
 
 `app/build/outputs/apk/debug/app-debug.apk`
 
-The release build is intentionally unsigned. Supply an organization-controlled release keystore before distributing through managed channels or an app store.
+Release builds are signed locally when the ignored signing.properties and .signing/roadgps-release.jks files are present. Keep the keystore and credentials private and backed up; they are never committed to Git.
 
 ## Verification scope
 

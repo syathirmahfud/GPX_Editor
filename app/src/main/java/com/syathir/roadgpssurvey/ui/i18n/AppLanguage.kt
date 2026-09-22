@@ -30,6 +30,7 @@ private val englishMessages = mapOf(
     "Ruas gagal dihapus. Silakan coba lagi." to "Could not delete the section. Please try again.",
     "Titik sudah tidak tersedia atau masih terhubung ke ruas." to "This point no longer exists or is still linked to a section.",
     "Titik gagal dihapus. Silakan coba lagi." to "Could not delete the point. Please try again.",
+    "Titik tidak tersedia atau ruas masih aktif. Selesaikan perekaman terlebih dahulu." to "The point is unavailable or its section is still active. Finish recording before deleting it.",
     "Perubahan titik belum tersimpan. Silakan coba lagi." to "Point changes were not saved. Please try again.",
     "Belum berhasil menyimpan. Silakan coba lagi." to "Could not save. Please try again.",
     "Tindakan gagal disimpan. Silakan coba lagi." to "The action could not be saved. Please try again.",

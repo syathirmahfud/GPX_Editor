@@ -37,6 +37,7 @@ import java.util.Locale
 
 import com.syathir.roadgpssurvey.ui.i18n.LocalAppStrings
 import com.syathir.roadgpssurvey.ui.i18n.AppStrings
+import com.syathir.roadgpssurvey.ui.i18n.message
 
 @Composable
 fun SessionDetailScreen(
@@ -52,7 +53,7 @@ fun SessionDetailScreen(
     val strings = LocalAppStrings.current
     var editing by remember { mutableStateOf<SurveyMarker?>(null) }
     var pendingDeleteId by rememberSaveable { mutableStateOf<Long?>(null) }
-    val pendingDelete = state.markers.firstOrNull { it.id == pendingDeleteId && it.sessionId == null }
+    val pendingDelete = state.markers.firstOrNull { it.id == pendingDeleteId }
     if (pendingDelete != null && onDeleteMarker != null) {
         AlertDialog(
             onDismissRequest = { pendingDeleteId = null },
@@ -78,7 +79,7 @@ fun SessionDetailScreen(
                 style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
             OutlinedButton(onClick = onBack) { Text(strings.back) }
         }
-        error?.let { Text(it, color = MaterialTheme.colorScheme.error) }
+        error?.let { Text(strings.message(it), color = MaterialTheme.colorScheme.error) }
         val session = state.session
         if (session != null) {
             Text(String.format(Locale.US, if (strings.languageCode == "en") "Distance %.2f km" else "Jarak %.2f km", session.totalDistanceM / 1_000.0))
@@ -107,7 +108,7 @@ fun SessionDetailScreen(
                     Text(String.format(Locale.US, "WGS84 · %.7f, %.7f  ±%.1f m", marker.latitude, marker.longitude, marker.accuracyM))
                     if (marker.note.isNotBlank()) Text(marker.note)
                     TextButton(onClick = { editing = marker }) { Text(strings.edit) }
-                    if (marker.sessionId == null && onDeleteMarker != null) {
+                    if (allMarkers && onDeleteMarker != null) {
                         OutlinedButton(onClick = { pendingDeleteId = marker.id }, enabled = deletingMarkerId == null) {
                             Text(if (deletingMarkerId == marker.id) strings.deleting else strings.deleteMarker, color = MaterialTheme.colorScheme.error)
                         }

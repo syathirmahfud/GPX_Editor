@@ -46,8 +46,27 @@ class SurveyDeletionTest {
         assertFalse(repository.deleteFinishedSession(deletedId))
         repository.updateMarker(retained.copy(note = "Masih tersimpan", sessionId = deletedId))
         assertEquals("Masih tersimpan", database.markerDao().getAll().single { it.sessionId == null }.note)
-        assertTrue(repository.deleteRetainedMarker(retained.id))
+        assertTrue(repository.deleteSavedMarker(retained.id))
         assertTrue(database.markerDao().getAll().none { it.id == retained.id })
+    }
+
+    @Test fun finishedSurveyMarkerCanBeDeletedWithoutDeletingSurvey() = runBlocking {
+        val id = seed(TrackingStatus.FINISHED)
+        val marker = repository.getMarkers(id).single()
+
+        assertTrue(repository.deleteSavedMarker(marker.id))
+        assertNotNull(repository.getSession(id))
+        assertEquals(1, repository.getPoints(id).size)
+        assertTrue(repository.getMarkers(id).isEmpty())
+    }
+
+    @Test fun activeSurveyMarkerCannotBeDeletedFromSavedPoints() = runBlocking {
+        val id = seed(TrackingStatus.TRACKING)
+        val marker = repository.getMarkers(id).single()
+
+        assertFalse(repository.deleteSavedMarker(marker.id))
+        assertNotNull(repository.getSession(id))
+        assertEquals(1, repository.getMarkers(id).size)
     }
 
     @Test fun namingAfterFinishPersistsPromptAndRenamesMarkerSource() = runBlocking {

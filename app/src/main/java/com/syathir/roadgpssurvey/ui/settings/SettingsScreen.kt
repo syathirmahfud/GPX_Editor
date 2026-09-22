@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.syathir.roadgpssurvey.data.GpsSettings
 import com.syathir.roadgpssurvey.ui.i18n.appStringsFor
@@ -113,5 +114,12 @@ fun SettingsScreen(
         form.error?.let { Text(it, color = MaterialTheme.colorScheme.error) }
         if (form.saved) Text(strings.settingsSaved, color = MaterialTheme.colorScheme.primary)
         Button(onClick = onSave, modifier = Modifier.fillMaxWidth()) { Text(strings.saveSettings) }
+        Text(
+            text = strings.attribution,
+            modifier = Modifier.fillMaxWidth().padding(top = 8.dp, bottom = 12.dp),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            textAlign = TextAlign.Center,
+        )
     }
 }

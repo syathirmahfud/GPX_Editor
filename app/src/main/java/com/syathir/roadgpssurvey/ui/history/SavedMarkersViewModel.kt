@@ -24,8 +24,8 @@ class SavedMarkersViewModel(application: Application) : AndroidViewModel(applica
         mutableError.value = null
         viewModelScope.launch {
             try {
-                if (!repository.deleteRetainedMarker(id)) {
-                    mutableError.value = "Titik sudah tidak tersedia atau masih terhubung ke ruas."
+                if (!repository.deleteSavedMarker(id)) {
+                    mutableError.value = "Titik tidak tersedia atau ruas masih aktif. Selesaikan perekaman terlebih dahulu."
                 }
             } catch (cancelled: CancellationException) { throw cancelled }
             catch (_: Exception) { mutableError.value = "Titik gagal dihapus. Silakan coba lagi." }

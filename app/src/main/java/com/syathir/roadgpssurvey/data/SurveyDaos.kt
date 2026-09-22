@@ -63,8 +63,11 @@ interface SurveyMarkerDao {
     @Insert
     suspend fun insert(marker: SurveyMarker): Long
 
-    @Query("DELETE FROM survey_markers WHERE id = :id AND sessionId IS NULL")
-    suspend fun deleteDetached(id: Long): Int
+    @Query("SELECT * FROM survey_markers WHERE id = :id")
+    suspend fun get(id: Long): SurveyMarker?
+
+    @Query("DELETE FROM survey_markers WHERE id = :id")
+    suspend fun deleteById(id: Long): Int
 
     @Query("UPDATE survey_markers SET sessionId = NULL WHERE sessionId = :sessionId")
     suspend fun detachFromSession(sessionId: Long): Int
