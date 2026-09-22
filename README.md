@@ -14,7 +14,7 @@ Android field-survey tracker for road and civil-engineering work. The app record
 - History offers HAPUS for finished ruas with confirmation. Deletion removes the ruas and its recorded track samples, but preserves all marked points with their original ruas name. Active and paused surveys are protected. Previously exported files are unaffected.
 - The dashboard fills the available screen with stable metric-card sizes, equal secondary cards, and single-line fitted values. Landscape uses a wider layout; small windows allow metric scrolling while keeping recording controls visible.
 
-## Version 1.0.2 workflow
+## Version 1.0.3 workflow
 
 - UI, notifications, floating controls, and messages use Bahasa Indonesia. Android-owned permission and file-picker dialogs follow the device configuration.
 - MULAI starts recording; TANDAI saves a marked point without pausing time or distance. JEDA + TITIK retains the existing pause-and-mark operation; LANJUT resumes it. The title/notification/overlay display the saved marker count.
