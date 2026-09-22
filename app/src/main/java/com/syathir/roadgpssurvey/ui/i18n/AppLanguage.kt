@@ -44,6 +44,7 @@ private val englishMessages = mapOf(
     "Pemilih berkas tidak dapat dibuka. Data ruas tetap tersimpan." to "The file picker could not open. Section data is still saved.",
     "Ekspor CSV tersimpan" to "CSV export saved",
     "Ekspor GPX tersimpan" to "GPX export saved",
+    "Ekspor KMZ tersimpan" to "KMZ export saved",
     "Menunggu GPS" to "Waiting for GPS",
     "Sembunyikan panel melayang" to "Hide floating panel",
     "Perekaman selesai" to "Recording finished",

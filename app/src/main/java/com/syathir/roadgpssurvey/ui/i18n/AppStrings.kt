@@ -95,7 +95,8 @@ interface AppStrings {
     fun exportMessage(name: String): String
     val exportCsv: String
     val exportGpx: String
-    val exportBoth: String
+    val exportKmz: String
+    val exportAll: String
     val cancelExportHint: String
 
     // Marker Types
@@ -188,7 +189,8 @@ object IndonesianStrings : AppStrings {
     override fun exportMessage(name: String): String = "$name sudah tersimpan. Pilih berkas yang ingin diekspor."
     override val exportCsv: String = "CSV"
     override val exportGpx: String = "GPX"
-    override val exportBoth: String = "CSV DAN GPX"
+    override val exportKmz: String = "KMZ"
+    override val exportAll: String = "CSV, GPX DAN KMZ"
     override val cancelExportHint: String = "Membatalkan ekspor tidak menghapus data ruas."
 
     override fun markerTypeName(type: MarkerType): String = type.displayName
@@ -280,7 +282,8 @@ object EnglishStrings : AppStrings {
     override fun exportMessage(name: String): String = "$name has been saved. Select files to export."
     override val exportCsv: String = "CSV"
     override val exportGpx: String = "GPX"
-    override val exportBoth: String = "CSV AND GPX"
+    override val exportKmz: String = "KMZ"
+    override val exportAll: String = "CSV, GPX AND KMZ"
     override val cancelExportHint: String = "Canceling export does not delete section data."
 
     override fun markerTypeName(type: MarkerType): String = when (type) {

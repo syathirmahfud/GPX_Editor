@@ -103,8 +103,12 @@ fun FinishSurveyDialog(
             text = {
                 Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     Text(strings.exportMessage(session.name))
-                    listOf(strings.exportCsv to listOf(ExportFormat.CSV), strings.exportGpx to listOf(ExportFormat.GPX),
-                        strings.exportBoth to ExportFormat.entries.toList()).forEach { (label, formats) ->
+                    listOf(
+                        strings.exportCsv to listOf(ExportFormat.CSV),
+                        strings.exportGpx to listOf(ExportFormat.GPX),
+                        strings.exportKmz to listOf(ExportFormat.KMZ),
+                        strings.exportAll to ExportFormat.entries.toList(),
+                    ).forEach { (label, formats) ->
                         OutlinedButton(onClick = { onExport(formats) }, enabled = !busy, modifier = Modifier.fillMaxWidth()) { Text(label) }
                     }
                     Text(strings.cancelExportHint)

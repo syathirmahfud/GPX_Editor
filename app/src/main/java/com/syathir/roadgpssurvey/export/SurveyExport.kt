@@ -8,6 +8,7 @@ import java.io.Writer
 enum class ExportFormat(val extension: String) {
     CSV("csv"),
     GPX("gpx"),
+    KMZ("kmz"),
 }
 
 data class SurveyExportData(
@@ -19,4 +20,3 @@ data class SurveyExportData(
 interface SurveyExporter {
     fun write(data: SurveyExportData, writer: Writer)
 }
-

@@ -19,5 +19,6 @@ class DayNightScheduleTest {
     @Test fun exportUsesRuasNameWithoutPathCharacters() {
         assertEquals("Jalan A_B_42.csv", ExportFileName.forSession("Jalan A/B", 42, ExportFormat.CSV))
         assertEquals("Ruas_42.gpx", ExportFileName.forSession("...", 42, ExportFormat.GPX))
+        assertEquals("Jalan KMZ_7.kmz", ExportFileName.forSession("Jalan KMZ", 7, ExportFormat.KMZ))
     }
 }

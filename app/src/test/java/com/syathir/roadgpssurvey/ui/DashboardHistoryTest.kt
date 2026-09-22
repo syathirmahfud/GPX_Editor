@@ -131,7 +131,7 @@ class DashboardHistoryTest {
         capture("empty-detail-night")
     }
 
-    @Test fun finishAsksNameThenOffersBothFormats() {
+    @Test fun finishAsksNameThenOffersAllFormats() {
         val session = mutableStateOf(SurveySession(id = 1, name = "RUAS_TEST", startedAt = 0,
             status = TrackingStatus.FINISHED, finishStep = "NAME"))
         var selected: List<ExportFormat>? = null
@@ -145,10 +145,10 @@ class DashboardHistoryTest {
         compose.onNode(hasSetTextAction()).performTextInput("Jalan Uji")
         compose.onNodeWithText("SIMPAN").performClick()
         compose.onNodeWithText("Ekspor ruas").assertIsDisplayed()
-        compose.onNodeWithText("CSV DAN GPX").performClick()
+        compose.onNodeWithText("CSV, GPX DAN KMZ").performClick()
         compose.runOnIdle {
             assertEquals("Jalan Uji", session.value.name)
-            assertEquals(listOf(ExportFormat.CSV, ExportFormat.GPX), selected)
+            assertEquals(listOf(ExportFormat.CSV, ExportFormat.GPX, ExportFormat.KMZ), selected)
         }
     }
 

@@ -118,6 +118,7 @@ private fun SurveyHistoryCard(
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     Button(onClick = { onExport(session.id, ExportFormat.CSV) }) { Text("CSV") }
                     Button(onClick = { onExport(session.id, ExportFormat.GPX) }) { Text("GPX") }
+                    Button(onClick = { onExport(session.id, ExportFormat.KMZ) }) { Text("KMZ") }
                 }
                 OutlinedButton(onClick = { onDelete(session.id) }, enabled = deletingId == null) {
                     Text(if (deletingId == session.id) strings.deleting else strings.delete, color = MaterialTheme.colorScheme.error)

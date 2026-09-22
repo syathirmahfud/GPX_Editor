@@ -10,16 +10,17 @@ Android field-survey tracker for road and civil-engineering work. The app record
 - Active time uses `SystemClock.elapsedRealtime()`, with five-second persistent checkpoints.
 - Accepted fixes require usable accuracy, the configured maximum accuracy, meaningful movement, chronological order, and a plausible displacement/time relationship.
 - Distance is stored as `Double` metres; STA is calculated independently of the UI from `startChainageM + totalDistanceM`.
-- Completed surveys export to CSV or GPX through Android's document picker.
+- Completed surveys export to CSV, GPX, or KMZ through Android's document picker.
 - History offers HAPUS for finished ruas with confirmation. Deletion removes the ruas and its recorded track samples, but preserves all marked points with their original ruas name. Active and paused surveys are protected. Previously exported files are unaffected.
 - The dashboard fills the available screen with stable metric-card sizes, equal secondary cards, and single-line fitted values. Landscape uses a wider layout; small windows allow metric scrolling while keeping recording controls visible.
 
-## Version 1.0.4 workflow
+## Version 1.0.5 workflow
 
 - UI, notifications, floating controls, and messages use Bahasa Indonesia. Android-owned permission and file-picker dialogs follow the device configuration.
 - MULAI starts recording; TANDAI saves a marked point without pausing time or distance. JEDA + TITIK retains the existing pause-and-mark operation; LANJUT resumes it. The title/notification/overlay display the saved marker count.
-- SELESAI stops recording and persists the data before asking for Nama Ruas. Enter a name or explicitly choose NAMA OTOMATIS, then select CSV, GPX, CSV DAN GPX, or NANTI. The filename uses the ruas name. Both formats use sequential document pickers. Cancelling export keeps internal survey data.
+- SELESAI stops recording and persists the data before asking for Nama Ruas. Enter a name or explicitly choose NAMA OTOMATIS, then select CSV, GPX, KMZ, CSV/GPX/KMZ together, or NANTI. The filename uses the ruas name. Multiple formats use sequential document pickers. Cancelling export keeps internal survey data.
 - Pending naming/export prompts are stored in Room and return on reopening. Finishing through the notification also leaves a completion notification linking back to the app.
+- KMZ export opens directly in Google Earth-style viewers with the recorded road track as a LineString and saved points as Placemarks. Saved points keep their original recorded GNSS coordinates and are not snapped to the road line.
 - Saved points from a finished ruas can be deleted independently without deleting the road survey or its GPX/track data first. Markers belonging to an active recording remain protected until the survey is finished.
 - RIWAYAT → TITIK TERSIMPAN displays marked points, including those whose ruas was deleted; their name, note, type, WGS84 coordinates, original STA, and original ruas name remain available.
 - Day mode is white with black text from 06:00 through 17:59; night mode is black with white text from 18:00 through 05:59, using the phone's local clock/timezone. This applies to all screens and the floating panel, and updates while open. Empty details explicitly show “Belum ada titik penanda.”
