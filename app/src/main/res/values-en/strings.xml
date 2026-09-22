@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Road GPS Survey</string>
+    <string name="tracking_channel_name">GPS survey tracking</string>
+    <string name="tracking_channel_description">Maintains road survey tracking when screen is off</string>
+    <string name="overlay_sta">STA %1$s</string>
+    <string name="overlay_pause_mark">PAUSE + MARK</string>
+    <string name="overlay_resume">RESUME</string>
+    <string name="overlay_inactive">NOT RECORDING</string>
+    <string name="overlay_mark">MARK</string>
+    <plurals name="overlay_details">
+        <item quantity="one">%1$s km  %2$s\n%3$d point saved%4$s</item>
+        <item quantity="other">%1$s km  %2$s\n%3$d points saved%4$s</item>
+    </plurals>
+</resources>

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Survei GPS Jalan</string>
+    <string name="tracking_channel_name">Perekaman survei GPS</string>
+    <string name="tracking_channel_description">Menjaga perekaman survei jalan saat layar mati</string>
+    <string name="overlay_sta">STA %1$s</string>
+    <string name="overlay_pause_mark">JEDA + TITIK</string>
+    <string name="overlay_resume">LANJUT</string>
+    <string name="overlay_inactive">TIDAK MEREKAM</string>
+    <string name="overlay_mark">TANDAI</string>
+    <plurals name="overlay_details">
+        <item quantity="other">%1$s km  %2$s\n%3$d titik tersimpan%4$s</item>
+    </plurals>
+</resources>
