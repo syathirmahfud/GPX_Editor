@@ -10,3 +10,7 @@ captures/
 *.apk
 *.aab
 *.apks
+*.jks
+*.keystore
+signing.properties
+.signing/
